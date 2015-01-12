@@ -1,7 +1,7 @@
 
 public class Mastermind
 {
-	private String[] answer = new String[4];
+	private Peg[] answer = new Peg[4];
 	
 	public Mastermind()
 	{
@@ -15,41 +15,30 @@ public class Mastermind
 			int color = 1 + (int) (Math.random() * 4);
 			if (color == 1)
 			{
-				answer[i] = "Black";
+				Peg newPeg = new Peg("Black");
+				answer[i] = newPeg;
 			}
 			if (color == 2)
 			{
-				answer[i] = "Blue";
+				Peg newPeg = new Peg("Blue");
+				answer[i] = newPeg;
 			}
 			if (color == 3)
 			{
-				answer[i] = "Yellow";
+				Peg newPeg = new Peg("Red");
+				answer[i] = newPeg;
 			}
 			if (color == 4)
 			{
-				answer[i] = "Red";
+				Peg newPeg = new Peg("Yellow");
+				answer[i] = newPeg;
 			}
 		}
 	}
 	
-	public String getFirst()
+	public Peg[] getAnswer()
 	{
-		return answer[0];
-	}
-	
-	public String getSecond()
-	{
-		return answer[1];
-	}
-	
-	public String getThird()
-	{
-		return answer[2];
-	}
-	
-	public String getForth()
-	{
-		return answer[3];
+		return answer;
 	}
 
 }

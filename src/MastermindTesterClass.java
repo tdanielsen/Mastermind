@@ -8,11 +8,24 @@ public class MastermindTesterClass
 		System.out.println(color);
 		
 		Mastermind game = new Mastermind();
-		System.out.println(game.getFirst());
-		System.out.println(game.getSecond());
-		System.out.println(game.getThird());
-		System.out.println(game.getForth());
 
+		String[] guess = new String[4];
+		guess[0] = "Black";
+		guess[1] = "Blue";
+		guess[2] = "Blue";
+		guess[3] = "Blue";
+		GuessChecker check = new GuessChecker(game);
+		check.checkGuess(guess);
+		check.giveResult();
+		boolean done = false;
+		while (!done)
+		{
+			for (int i = 0; i < guess.length; i++)
+			{
+				System.out.print("Carrots");
+			}
+			done = true;
+		}
 	}
 
 }
