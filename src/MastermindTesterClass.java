@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class MastermindTesterClass
 {
@@ -10,22 +12,18 @@ public class MastermindTesterClass
 		Mastermind game = new Mastermind();
 
 		String[] guess = new String[4];
-		guess[0] = "Black";
-		guess[1] = "Blue";
-		guess[2] = "Blue";
-		guess[3] = "Blue";
+		guess[0] = "Blue";
+		guess[1] = "Black";
+		guess[2] = "Red";
+		guess[3] = "Yellow";
+		Peg[] fake = new Peg[4];
+		fake[0] = new Peg("Blue");
+		fake[1] = new Peg("Red");
+		fake[2] = new Peg("Red");
+		fake[3] = new Peg("Red");
 		GuessChecker check = new GuessChecker(game);
-		check.checkGuess(guess);
+		check.checkGuess2(guess, fake);
 		check.giveResult();
-		boolean done = false;
-		while (!done)
-		{
-			for (int i = 0; i < guess.length; i++)
-			{
-				System.out.print("Carrots");
-			}
-			done = true;
-		}
 	}
 
 }

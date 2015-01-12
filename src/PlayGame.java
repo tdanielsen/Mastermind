@@ -11,7 +11,7 @@ public class PlayGame
 		boolean done = false;
 		while (!done)
 		{
-			System.out.print("Please enter a command (p, q,): ");
+			System.out.print("Please enter a command (p, h, q,): ");
 			String input = scanner.nextLine();
 			if (input.length() > 0)
 			{
@@ -19,11 +19,13 @@ public class PlayGame
 				{
 
 				case "p":
-					// Makes sure that the program won't crash if there is
-					// an IllegalBinaryTreeOpException
 					play(scanner);
 					break;
-
+				
+				case "h":
+					System.out.println("How to Play:");
+					System.out.println("Guess what the computer made as an answer by typing, when prompted,");
+					System.out.println("'Blue', 'Yellow', 'Black', or 'Red'. Are you a mastermind?");
 				case "q":
 					done = true;
 					break;
@@ -44,13 +46,25 @@ public class PlayGame
 		boolean gameInProgress = true;
 		while (gameInProgress)
 		{
-			System.out.println(newGame.getAnswer().length);
 			String[] guess = new String[4];
 			for (int i = 1; i <= newGame.getAnswer().length; i++)
 			{
 				System.out.println("Make a guess for position number " + i);
 				input = scanner.nextLine();
+				if (input.equalsIgnoreCase("Give up"))
+				{
+					for (int j = 0; j < newGame.getAnswer().length; j++)
+					{
+						System.out.println(newGame.getAnswer()[j].checkColor());
+					}
+					gameInProgress = false;
+					break;
+				}
 				guess[i - 1] = input;
+			}
+			if (gameInProgress == false)
+			{
+				break;
 			}
 			GuessChecker check = new GuessChecker(newGame);
 			check.checkGuess(guess);
@@ -62,6 +76,7 @@ public class PlayGame
 			else
 			{
 				check.giveResult();
+				System.out.println("Guess again!");
 			}
 		}
 		

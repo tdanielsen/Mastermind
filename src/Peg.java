@@ -16,7 +16,7 @@ public class Peg
 	
 	public void changeStatus()
 	{
-		checked ^= true;
+		checked = !checked;
 	}
 	public String checkColor()
 	{

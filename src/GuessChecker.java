@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 
 public class GuessChecker
 {
 	private Mastermind master;
-	private String[] result = new String[4];
+	private ArrayList<String> result = new ArrayList<String>();
 	private int rcwp = 0;
 	private int rcrp = 0;
 	
@@ -20,19 +22,22 @@ public class GuessChecker
 			{
 				if (answer[j].isChecked() == true)
 				{
-					break;
+					
 				}
-				if (guess[i].equalsIgnoreCase(answer[j].checkColor()))
+				else
 				{
-					if (i == j)
+					if (guess[i].equalsIgnoreCase(answer[i].checkColor()))
 					{
 						rcrp++;
 						answer[j].changeStatus();
 						break;
 					}
-					rcwp++;
-					answer[j].changeStatus();
-					break;
+					else if (guess[i].equalsIgnoreCase(answer[j].checkColor()))
+					{	
+						rcwp++;
+						answer[j].changeStatus();
+						break;
+					}
 				}
 			}
 		}
@@ -42,6 +47,38 @@ public class GuessChecker
 		}
 	}
 	
+	public void checkGuess2(String[] guess, Peg[] fake)
+	{
+		for (int i = 0; i < guess.length; i++)
+		{
+			for (int j = 0; j < fake.length; j++)
+			{
+				if (fake[j].isChecked() == true)
+				{
+					
+				}
+				else
+				{
+					if (guess[i].equalsIgnoreCase(fake[i].checkColor()))
+					{
+						rcrp++;
+						fake[j].changeStatus();
+						break;
+					}
+					else if (guess[i].equalsIgnoreCase(fake[j].checkColor()))
+					{	
+						rcwp++;
+						fake[j].changeStatus();
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < fake.length; i++)
+		{
+			fake[i].changeStatus();
+		}
+	}
 	public boolean isWinner()
 	{
 		if (rcrp == 4)
@@ -54,15 +91,15 @@ public class GuessChecker
 	{
 		for (int i = 0; i < rcwp; i++)
 		{
-			result[i] = "White";
+			result.add("White");
 		}
-		for (int i = rcwp; i < rcrp; i++)
+		for (int i = 0; i < rcrp; i++)
 		{
-			result[i] = "Black";
+			result.add("Black");
 		}
-		for (int i = 0; i < result.length; i++)
+		for (int i = 0; i < result.size(); i++)
 		{
-			System.out.println(result[i]);
+			System.out.println(result.get(i));
 		}
 	}
 }
