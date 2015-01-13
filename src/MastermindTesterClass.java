@@ -12,18 +12,20 @@ public class MastermindTesterClass
 		Mastermind game = new Mastermind();
 
 		String[] guess = new String[4];
-		guess[0] = "Blue";
-		guess[1] = "Black";
-		guess[2] = "Red";
-		guess[3] = "Yellow";
+		guess[0] = "red";
+		guess[1] = "yellow";
+		guess[2] = "yellow";
+		guess[3] = "yellow";
 		Peg[] fake = new Peg[4];
-		fake[0] = new Peg("Blue");
-		fake[1] = new Peg("Red");
-		fake[2] = new Peg("Red");
-		fake[3] = new Peg("Red");
+		fake[0] = new Peg("red");
+		fake[1] = new Peg("yellow");
+		fake[2] = new Peg("yellow");
+		fake[3] = new Peg("yellow");
 		GuessChecker check = new GuessChecker(game);
 		check.checkGuess2(guess, fake);
 		check.giveResult();
+		String input = "Black";
+		System.out.println(!input.equalsIgnoreCase("Blue"));
 	}
 
 }

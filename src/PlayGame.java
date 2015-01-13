@@ -26,6 +26,8 @@ public class PlayGame
 					System.out.println("How to Play:");
 					System.out.println("Guess what the computer made as an answer by typing, when prompted,");
 					System.out.println("'Blue', 'Yellow', 'Black', or 'Red'. Are you a mastermind?");
+					break;
+					
 				case "q":
 					done = true;
 					break;
@@ -42,6 +44,8 @@ public class PlayGame
 	{
 		Mastermind newGame = new Mastermind();
 		String input = "";
+		boolean laura = false;
+		int count = 0;
 		System.out.println("The game is afoot!");
 		boolean gameInProgress = true;
 		while (gameInProgress)
@@ -49,8 +53,20 @@ public class PlayGame
 			String[] guess = new String[4];
 			for (int i = 1; i <= newGame.getAnswer().length; i++)
 			{
-				System.out.println("Make a guess for position number " + i);
+				laura = false;
+				System.out.println("Make a guess for position number " + i + 
+						". Remember only Black, Blue, Red, and Yellow are valid guesses.");
+				if (count == 19)
+				{
+					System.out.println("To give up, type give up to end the game and show you the answer.");
+				}
 				input = scanner.nextLine();
+				if ((!input.equalsIgnoreCase("Black")) && (!input.equalsIgnoreCase("Blue")) 
+						&& (!input.equalsIgnoreCase("Red")) && (!input.equalsIgnoreCase("Yellow")))
+				{
+					System.out.println("No, Laura, follow the instructions given.");
+					laura = true;
+				}
 				if (input.equalsIgnoreCase("Give up"))
 				{
 					for (int j = 0; j < newGame.getAnswer().length; j++)
@@ -61,6 +77,10 @@ public class PlayGame
 					break;
 				}
 				guess[i - 1] = input;
+				if (laura == true)
+				{
+					i--;
+				}
 			}
 			if (gameInProgress == false)
 			{
@@ -76,6 +96,7 @@ public class PlayGame
 			else
 			{
 				check.giveResult();
+				System.out.println();
 				System.out.println("Guess again!");
 			}
 		}

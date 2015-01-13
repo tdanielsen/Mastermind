@@ -26,7 +26,9 @@ public class GuessChecker
 				}
 				else
 				{
-					if (guess[i].equalsIgnoreCase(answer[i].checkColor()))
+					if ((guess[i].equalsIgnoreCase(answer[i].checkColor()) || 
+							guess[j].equalsIgnoreCase(answer[j].checkColor())) 
+							&& answer[i].isChecked() == false)
 					{
 						rcrp++;
 						answer[j].changeStatus();
@@ -59,13 +61,15 @@ public class GuessChecker
 				}
 				else
 				{
-					if (guess[i].equalsIgnoreCase(fake[i].checkColor()))
+					if ((guess[i].equalsIgnoreCase(fake[i].checkColor()) || 
+							guess[j].equalsIgnoreCase(fake[j].checkColor())) 
+							&& fake[i].isChecked() == false)
 					{
 						rcrp++;
 						fake[j].changeStatus();
 						break;
 					}
-					else if (guess[i].equalsIgnoreCase(fake[j].checkColor()))
+					if (guess[i].equalsIgnoreCase(fake[j].checkColor()))
 					{	
 						rcwp++;
 						fake[j].changeStatus();
@@ -99,7 +103,7 @@ public class GuessChecker
 		}
 		for (int i = 0; i < result.size(); i++)
 		{
-			System.out.println(result.get(i));
+			System.out.print(result.get(i) + " ");
 		}
 	}
 }
