@@ -20,21 +20,21 @@ public class GuessChecker
 		{
 			for (int j = 0; j < answer.length; j++)
 			{
-				if (answer[j].isChecked() == true)
+				if (answer[j].isChecked() == true || answer[i].isChecked() == true)
 				{
 					
 				}
 				else
 				{
-					if ((guess[i].equalsIgnoreCase(answer[i].checkColor()) || 
-							guess[j].equalsIgnoreCase(answer[j].checkColor())) 
-							&& answer[i].isChecked() == false)
+					if ((guess[i].toLowerCase().contains(answer[i].checkColor()) || 
+							(guess[j].toLowerCase().contains(answer[j].checkColor())) 
+							&& answer[i].isChecked() == false))
 					{
 						rcrp++;
 						answer[j].changeStatus();
 						break;
 					}
-					else if (guess[i].equalsIgnoreCase(answer[j].checkColor()))
+					else if (guess[i].toLowerCase().contains(answer[j].checkColor()))
 					{	
 						rcwp++;
 						answer[j].changeStatus();
@@ -55,21 +55,21 @@ public class GuessChecker
 		{
 			for (int j = 0; j < fake.length; j++)
 			{
-				if (fake[j].isChecked() == true)
+				if (fake[j].isChecked() == true || fake[i].isChecked() == true)
 				{
 					
 				}
 				else
 				{
-					if ((guess[i].equalsIgnoreCase(fake[i].checkColor()) || 
-							guess[j].equalsIgnoreCase(fake[j].checkColor())) 
-							&& fake[i].isChecked() == false)
+					if ((guess[i].toLowerCase().contains(fake[i].checkColor()) || 
+							(guess[j].toLowerCase().contains(fake[j].checkColor())) 
+							&& fake[i].isChecked() == false))
 					{
 						rcrp++;
 						fake[j].changeStatus();
 						break;
 					}
-					if (guess[i].equalsIgnoreCase(fake[j].checkColor()))
+					else if (guess[i].toLowerCase().contains(fake[j].checkColor()))
 					{	
 						rcwp++;
 						fake[j].changeStatus();
